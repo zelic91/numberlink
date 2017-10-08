@@ -22,6 +22,15 @@ class GameScene: SKScene {
         
         let starNode = SKSpriteNode(imageNamed: "Star")
         starNode.position = CGPoint(x: self.size.width / 2 - 30, y: self.size.height - 120)
+        
+        let pointNode = SKLabelNode(fontNamed: "ProximaNovaSoft-Semibold")
+        pointNode.position = CGPoint(x: self.size.width / 2 + 30, y: self.size.height - 145)
+        pointNode.text = "99"
+        pointNode.horizontalAlignmentMode = .left
+        pointNode.fontSize = 70
+        pointNode.fontColor = UIColor(red:0.29, green:0.56, blue:0.89, alpha:1.0)
+        
+        addChild(pointNode)
         addChild(starNode)
     }
     

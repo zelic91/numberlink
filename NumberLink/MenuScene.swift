@@ -21,6 +21,7 @@ class MenuScene: SKScene {
         
         let starNode = SKSpriteNode(imageNamed: "Star")
         starNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 100)
+        
         addChild(starNode)
         
         setupButtons()
