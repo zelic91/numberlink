@@ -17,7 +17,7 @@ class MenuScene: SKScene {
     
     func setupView() {
         backgroundColor = .white
-        scaleMode = .resizeFill
+        scaleMode = .aspectFit
         
         let starNode = SKSpriteNode(imageNamed: "Star")
         starNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 100)

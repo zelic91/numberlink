@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA4D1F921C300020CB58 /* NumberNode.swift */; };
+		9129BA521F92210C0020CB58 /* CGPoint+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */; };
+		9129BA541F9227DF0020CB58 /* Gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9129BA531F9227DF0020CB58 /* Gradient.fsh */; };
+		9129BA561F922A490020CB58 /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA551F922A490020CB58 /* SKTexture+Gradient.swift */; };
+		9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187C4771F9231B400AA624A /* SKColor+Vector4.swift */; };
 		9199F57E1F8A38D6004BB26B /* proxima-nova-soft-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9199F57D1F8A38D5004BB26B /* proxima-nova-soft-semibold.otf */; };
 		91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F0FC1F89CD9D006E4B1C /* AppDelegate.swift */; };
 		91C7F1031F89CD9D006E4B1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F1021F89CD9D006E4B1C /* GameScene.swift */; };
@@ -37,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9129BA4D1F921C300020CB58 /* NumberNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberNode.swift; sourceTree = "<group>"; };
+		9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Distance.swift"; sourceTree = "<group>"; };
+		9129BA531F9227DF0020CB58 /* Gradient.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gradient.fsh; sourceTree = "<group>"; };
+		9129BA551F922A490020CB58 /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
+		9187C4771F9231B400AA624A /* SKColor+Vector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Vector4.swift"; sourceTree = "<group>"; };
 		9199F57D1F8A38D5004BB26B /* proxima-nova-soft-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "proxima-nova-soft-semibold.otf"; path = "../../../NumberLink-Res/proxima-nova-soft-semibold.otf"; sourceTree = "<group>"; };
 		91C7F0F91F89CD9D006E4B1C /* NumberLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C7F0FC1F89CD9D006E4B1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +130,7 @@
 		91C7F0FB1F89CD9D006E4B1C /* NumberLink */ = {
 			isa = PBXGroup;
 			children = (
+				9129BA551F922A490020CB58 /* SKTexture+Gradient.swift */,
 				91C7F1321F89F0D5006E4B1C /* Assets.xcassets */,
 				91C7F0FC1F89CD9D006E4B1C /* AppDelegate.swift */,
 				91C7F1021F89CD9D006E4B1C /* GameScene.swift */,
@@ -128,6 +139,10 @@
 				91C7F1061F89CD9D006E4B1C /* Main.storyboard */,
 				91C7F10B1F89CD9D006E4B1C /* LaunchScreen.storyboard */,
 				91C7F10E1F89CD9D006E4B1C /* Info.plist */,
+				9129BA4D1F921C300020CB58 /* NumberNode.swift */,
+				9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */,
+				9129BA531F9227DF0020CB58 /* Gradient.fsh */,
+				9187C4771F9231B400AA624A /* SKColor+Vector4.swift */,
 			);
 			path = NumberLink;
 			sourceTree = "<group>";
@@ -257,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9129BA541F9227DF0020CB58 /* Gradient.fsh in Resources */,
 				91C7F1081F89CD9D006E4B1C /* Main.storyboard in Resources */,
 				91C7F1331F89F0D6006E4B1C /* Assets.xcassets in Resources */,
 				91C7F10D1F89CD9D006E4B1C /* LaunchScreen.storyboard in Resources */,
@@ -285,10 +301,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9129BA521F92210C0020CB58 /* CGPoint+Distance.swift in Sources */,
 				91C7F1031F89CD9D006E4B1C /* GameScene.swift in Sources */,
 				91C7F1311F89D064006E4B1C /* MenuScene.swift in Sources */,
 				91C7F1051F89CD9D006E4B1C /* GameViewController.swift in Sources */,
+				9129BA561F922A490020CB58 /* SKTexture+Gradient.swift in Sources */,
 				91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */,
+				9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */,
+				9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
