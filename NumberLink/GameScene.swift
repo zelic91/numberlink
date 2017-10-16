@@ -11,9 +11,13 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    // Menu
     let starNode = SKSpriteNode(imageNamed: "Star")
     let scoreNode = SKLabelNode(fontNamed: "ProximaNovaSoft-Semibold")
-    var score = 1
+    var score = 0
+    
+    // Gameplay
+    let gamePlay = Gameplay()
     
     // Game elements
     let elementRadius: CGFloat = 30
@@ -34,11 +38,15 @@ class GameScene: SKScene {
     
     // Paths created by touches
     var pathShapes: [SKShapeNode] = [SKShapeNode]()
-    var currentNode: SKShapeNode?
+    var currentNode: NumberNode?
+    
+    // Gameplay
+    var relationships: [NumberNode: [NumberNode]] = [NumberNode: [NumberNode]]()
     
     // MARK: - Life cycle
     
     override func didMove(to view: SKView) {
+        setupTestView()
         setupView()
         setupScore()
         setupMenu()
@@ -47,6 +55,26 @@ class GameScene: SKScene {
     
     
     // MARK: - Game stuff
+    
+    func setupTestView() {
+        let node = SKShapeNode(rect: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 4, height: 100)))
+        let shader = SKShader(fileNamed: "Gradient.fsh")
+        let topColor = SKColor.blue
+        let bottomColor = SKColor.red
+        let topUniform = SKUniform(name: "topColor")
+        topUniform.floatVector4Value = topColor.vec4()
+        let bottomUniform = SKUniform(name: "bottomColor")
+        bottomUniform.floatVector4Value = bottomColor.vec4()
+        let uniforms = [
+            topUniform,
+            bottomUniform
+        ]
+        shader.uniforms = uniforms
+        node.fillShader = shader
+        node.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        node.zRotation = CGFloat(Double.pi / 4)
+        addChild(node)
+    }
     
     func setupView() {
         scaleMode = .aspectFill
@@ -105,6 +133,7 @@ class GameScene: SKScene {
             shapeNodes.append(shape)
         }
         reloadLabels()
+        reloadRelationships()
     }
     
     func animateShapes() {
@@ -131,6 +160,12 @@ class GameScene: SKScene {
             } while (values.index(of: value) != nil)
             values.append(value)
             label.text = "\(value)"
+        }
+    }
+    
+    func reloadRelationships() {
+        for shape in shapeNodes {
+            relationships[shape] = []
         }
     }
     
@@ -164,8 +199,13 @@ extension GameScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchNode = findShapeNode(with: touches)
-        if let node = touchNode, currentNode != nil, node.position != currentNode!.position {
+        if let node = touchNode, currentNode != nil, node.position != currentNode!.position, !existRelationship(from: currentNode!, to: node) {
             finishPath(to: node)
+            
+            if (pathShapes.count == 5) {
+                clearPaths()
+                reloadRelationships()
+            }
         } else {
             let location = touches.first!.location(in: self)
             modifyPath(to: location)
@@ -185,10 +225,16 @@ extension GameScene {
             }
         } else {
             clearPaths()
+            reloadRelationships()
             animateShapes()
-            increaseScore()
-            reloadLabels()
         }
+    }
+    
+    func existRelationship(from: NumberNode, to: NumberNode) -> Bool {
+        if let _ = relationships[from]?.index(of: to) {
+            return true
+        }
+        return false
     }
     
     func findShapeNode(with touches: Set<UITouch>) -> NumberNode? {
@@ -221,28 +267,16 @@ extension GameScene {
     }
     
     func finishPath(to node: NumberNode) {
-        modifyPath(to: node.position)
-//        let pathShape = pathShapes.last!
-//
-//        let gradientShader = SKShader(fileNamed: "Gradient.fsh")
-//        let topColor = SKColor(cgColor: currentNode!.strokeColor.cgColor)
-//        let bottomColor = SKColor(cgColor: node.strokeColor.cgColor)
-//        let topColorUniform = SKUniform(name: "topColor")
-//        topColorUniform.floatVector4Value = topColor.vec4()
-//        let bottomColorUniform = SKUniform(name: "bottomColor")
-//        bottomColorUniform.floatVector4Value = bottomColor.vec4()
-//        let uniforms = [
-//            topColorUniform,
-//            bottomColorUniform
-//        ]
-//        gradientShader.uniforms = uniforms
-//        pathShape.strokeShader = gradientShader
+        relationships[node]?.append(currentNode!)
+        relationships[currentNode!]?.append(node)
         
+        modifyPath(to: node.position)
         currentNode = node
         addPath()
     }
     
     func clearPaths() {
         self.removeChildren(in: pathShapes)
+        pathShapes.removeAll()
     }
 }

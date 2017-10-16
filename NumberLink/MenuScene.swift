@@ -12,7 +12,6 @@ class MenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         setupView()
-        
     }
     
     func setupView() {

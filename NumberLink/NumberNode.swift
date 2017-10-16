@@ -9,5 +9,5 @@
 import SpriteKit
 
 class NumberNode: SKShapeNode {
-    
+    var number: Int!
 }
