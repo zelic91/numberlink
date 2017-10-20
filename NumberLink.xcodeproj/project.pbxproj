@@ -12,7 +12,7 @@
 		9129BA541F9227DF0020CB58 /* Gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9129BA531F9227DF0020CB58 /* Gradient.fsh */; };
 		9129BA561F922A490020CB58 /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA551F922A490020CB58 /* SKTexture+Gradient.swift */; };
 		9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187C4771F9231B400AA624A /* SKColor+Vector4.swift */; };
-		9199F57E1F8A38D6004BB26B /* proxima-nova-soft-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9199F57D1F8A38D5004BB26B /* proxima-nova-soft-semibold.otf */; };
+		91BA261F1F99DC27000D954B /* ProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA261E1F99DC27000D954B /* ProgressNode.swift */; };
 		91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F0FC1F89CD9D006E4B1C /* AppDelegate.swift */; };
 		91C7F1031F89CD9D006E4B1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F1021F89CD9D006E4B1C /* GameScene.swift */; };
 		91C7F1051F89CD9D006E4B1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F1041F89CD9D006E4B1C /* GameViewController.swift */; };
@@ -23,6 +23,7 @@
 		91C7F1311F89D064006E4B1C /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F1301F89D064006E4B1C /* MenuScene.swift */; };
 		91C7F1331F89F0D6006E4B1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C7F1321F89F0D5006E4B1C /* Assets.xcassets */; };
 		91CD27111F92EB87005165D9 /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CD27101F92EB87005165D9 /* Gameplay.swift */; };
+		91EBCD5E1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91EBCD5D1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,7 @@
 		9129BA531F9227DF0020CB58 /* Gradient.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gradient.fsh; sourceTree = "<group>"; };
 		9129BA551F922A490020CB58 /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
 		9187C4771F9231B400AA624A /* SKColor+Vector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Vector4.swift"; sourceTree = "<group>"; };
-		9199F57D1F8A38D5004BB26B /* proxima-nova-soft-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "proxima-nova-soft-semibold.otf"; path = "../../../NumberLink-Res/proxima-nova-soft-semibold.otf"; sourceTree = "<group>"; };
+		91BA261E1F99DC27000D954B /* ProgressNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressNode.swift; sourceTree = "<group>"; };
 		91C7F0F91F89CD9D006E4B1C /* NumberLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C7F0FC1F89CD9D006E4B1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91C7F1021F89CD9D006E4B1C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		91C7F1301F89D064006E4B1C /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		91C7F1321F89F0D5006E4B1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91CD27101F92EB87005165D9 /* Gameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
+		91EBCD5D1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-nova-soft-semibold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,17 +97,10 @@
 		9199F57B1F8A388E004BB26B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9199F57C1F8A38A9004BB26B /* Fonts */,
+				91EBCD5D1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf */,
 			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		9199F57C1F8A38A9004BB26B /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				9199F57D1F8A38D5004BB26B /* proxima-nova-soft-semibold.otf */,
-			);
-			path = Fonts;
+			name = Resources;
+			path = NumberLink;
 			sourceTree = "<group>";
 		};
 		91C7F0F01F89CD9D006E4B1C = {
@@ -146,6 +141,7 @@
 				9129BA531F9227DF0020CB58 /* Gradient.fsh */,
 				9187C4771F9231B400AA624A /* SKColor+Vector4.swift */,
 				91CD27101F92EB87005165D9 /* Gameplay.swift */,
+				91BA261E1F99DC27000D954B /* ProgressNode.swift */,
 			);
 			path = NumberLink;
 			sourceTree = "<group>";
@@ -230,6 +226,9 @@
 		91C7F0F11F89CD9D006E4B1C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Thuong Nguyen";
@@ -279,7 +278,7 @@
 				91C7F1081F89CD9D006E4B1C /* Main.storyboard in Resources */,
 				91C7F1331F89F0D6006E4B1C /* Assets.xcassets in Resources */,
 				91C7F10D1F89CD9D006E4B1C /* LaunchScreen.storyboard in Resources */,
-				9199F57E1F8A38D6004BB26B /* proxima-nova-soft-semibold.otf in Resources */,
+				91EBCD5E1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +309,7 @@
 				91C7F1051F89CD9D006E4B1C /* GameViewController.swift in Sources */,
 				9129BA561F922A490020CB58 /* SKTexture+Gradient.swift in Sources */,
 				91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */,
+				91BA261F1F99DC27000D954B /* ProgressNode.swift in Sources */,
 				9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */,
 				91CD27111F92EB87005165D9 /* Gameplay.swift in Sources */,
 				9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */,

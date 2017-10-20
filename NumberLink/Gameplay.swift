@@ -10,23 +10,86 @@ import SpriteKit
 
 class Gameplay {
     
-    var userResult: [NumberNode] = [NumberNode]()
-    var result: [NumberNode] = [NumberNode]()
+    var numbers: [Int] = [Int]()
+    var colors: [Int] = [Int]()
+    var chosenNumbers: [Int] = [Int]()
+    var score: Int = 0
+    var bound: UInt32 = 10
+    var time: Float = 0
     
-    func checkResult() -> Bool {
-        if userResult.count == 5 {
-            for i in 1..<userResult.count {
-                if userResult[i].number < userResult[i-1].number {
-                    return false
-                }
+    func addChoice(number: Int) {
+        chosenNumbers.append(number)
+    }
+    
+    func start(current: Float) {
+        time = current
+    }
+    
+    func canPlay() -> Bool {
+        return chosenNumbers.count < 5
+    }
+    
+    func canAdd(number: Int) -> Bool {
+        return chosenNumbers.index(of: number) == nil
+    }
+    
+    func reloadChoices() {
+        chosenNumbers.removeAll()
+    }
+    
+    func reloadGame() {
+        reloadChoices()
+        reloadNumbers()
+        reloadColors()
+    }
+    
+    func reloadNumbers() {
+        numbers.removeAll()
+        for _ in 0...4 {
+            var value = Int(arc4random() % bound)
+            repeat {
+                value = Int(arc4random() % bound)
+            } while (numbers.index(of: value) != nil)
+            numbers.append(value)
+        }
+    }
+    
+    func reloadColors() {
+        colors.removeAll()
+        for _ in 0...4 {
+            var value = Int(arc4random() % 5)
+            repeat {
+                value = Int(arc4random() % 5)
+            } while (colors.index(of: value) != nil)
+            colors.append(value)
+        }
+    }
+    
+    func isAcceptable() -> Bool {
+        for i in 1...4 {
+            if (chosenNumbers[i] <= chosenNumbers[i-1]) {
+                return false
             }
-            return true
         }
         return true
     }
     
-    func resetResult() {
-        userResult.removeAll()
-        result.removeAll()
+    func checkWin() -> Bool {
+        if chosenNumbers.count == 5 {
+            if isAcceptable() {
+                win()
+                return true
+            }
+            return false
+        }
+        return false
+    }
+    
+    func win() {
+        score += 1
+        bound += 5
+        if bound > 100 {
+            bound = 100
+        }
     }
 }
