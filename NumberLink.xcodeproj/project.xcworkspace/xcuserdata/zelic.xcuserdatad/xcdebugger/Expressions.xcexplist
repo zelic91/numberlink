@@ -14,6 +14,9 @@
             <PersistentString
                value = "node.position != currentNode!.position">
             </PersistentString>
+            <PersistentString
+               value = "!gamePlay.waitForNewRound">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
    </ContextStates>

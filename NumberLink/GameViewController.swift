@@ -16,10 +16,11 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            let scene = MenuScene(size: CGSize(width: 320, height: 568))
+            let scene = MenuScene(size: CGSize(width: 375, height: 667))
             scene.scaleMode = .aspectFit
             view.presentScene(scene)
             
+            view.allowsTransparency = true
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
