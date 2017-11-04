@@ -63,6 +63,8 @@ class GameScene: SKScene {
         setupProgress()
         setupGameElements()
         newGame()
+        
+        AdsManager.showAds()
     }
 }
 
@@ -94,6 +96,8 @@ extension GameScene {
         pauseScreen.homeButton.setTouchHandler { [weak self] in
             self?.goToMenuScreen()
         }
+        
+        addChild(gameOverScreen)
         addChild(pauseScreen)
     }
     
@@ -112,6 +116,7 @@ extension GameScene {
     func setupMenu() {
         exitButton.position = CGPoint(x: self.size.width - 10 - exitButton.size.width / 2, y: self.size.height - exitButton.size.height/2 - 10)
         exitButton.setTouchHandler { [weak self] in
+            self?.pauseGame()
             self?.pauseScreen.show()
         }
         self.addChild(exitButton)
@@ -127,20 +132,19 @@ extension GameScene {
         srandom(UInt32(time(nil)))
         
         setupNumberShapes()
-        animateNumberShapes()
     }
     
     func setupNumberShapes() {
         // Setup current path
         addChild(currentPath)
         
-        let centerPoint = CGPoint(x: size.width/2, y: padding + elementRadius + radius + 30)
+        let centerPoint = CGPoint(x: size.width/2, y: padding + elementRadius + radius + 100)
         for i in 0..<5 {
             let shape = NumberNode(circleOfRadius: elementRadius)
             shape.fillColor = .white
             shape.lineWidth = 4
             let x: CGFloat = centerPoint.x + radius * CGFloat(sin( Double(i) * 2.0 * Double.pi / 5))
-            let y: CGFloat = centerPoint.x + radius * CGFloat(cos( Double(i) * 2.0 * Double.pi / 5))
+            let y: CGFloat = centerPoint.y + radius * CGFloat(cos( Double(i) * 2.0 * Double.pi / 5))
             let point = CGPoint(x: x, y: y)
             shapePositions.append(point)
             shape.position = point
@@ -174,12 +178,13 @@ extension GameScene {
             let originLocation = shapePositions[i]
             shape.position = CGPoint(x: originLocation.x, y: originLocation.y - 20)
             shape.alpha = 0
-            shape.xScale = 1
-            shape.yScale = 1
             
             let fadeInAnim = SKAction.fadeIn(withDuration: 0.2)
             let transitionAnim = SKAction.move(to: originLocation, duration: 0.2)
             let groupAnim = SKAction.group([fadeInAnim, transitionAnim])
+            shape.removeAction(forKey: "scale")
+            shape.xScale = 1
+            shape.yScale = 1
             if i == index {
                 shape.run(SKAction.sequence([SKAction.wait(forDuration: delayTimes[i]), groupAnim, SKAction.run { [weak self] in
                         self?.gamePlay.waitForNewRound = false
@@ -190,18 +195,29 @@ extension GameScene {
         }
     }
     
-    // MARK: Reload
+// MARK: Game life cycle
     
     func newGame() {
-        gamePlay.score = 0
-        reloadGame()
+        gamePlay.newGame()
+        reloadScore()
+        clearPaths()
+        reloadNumberShapes()
+        animateNumberShapes()
+        progressNode.reloadProgress()
     }
     
     func reloadScore() {
         scoreNode.text = "\(gamePlay.score)"
     }
     
+    func pauseGame() {
+        progressNode.pauseProgress()
+    }
+    
     func reloadGame() {
+        for node in shapeNodes {
+            node.removeAllActions()
+        }
         reloadScore()
         gamePlay.reloadGame()
         clearPaths()
@@ -233,6 +249,8 @@ extension GameScene {
     
     func reloadProgress() {
         progressNode.startProgress(in: 5, with: { [weak self] in
+            ScoreUtil.setScore(value: self!.gamePlay.score)
+            self?.progressNode.pauseProgress()
             self?.showGameOver()
         })
     }
@@ -243,11 +261,14 @@ extension GameScene {
     
     func goToMenuScreen() {
         let scene = MenuScene.create()
-        let transition = SKTransition.fade(withDuration: 0.3)
+        let transition = SKTransition.fade(with: .white, duration: 0.3)
+        AdsManager.hideAds()
         self.view?.presentScene(scene, transition: transition)
     }
     
     func showGameOver() {
+        SoundManager.stopBackground()
+        
         gameOverScreen.show()
     }
 }
@@ -267,6 +288,8 @@ extension GameScene {
                 reloadProgress()
                 gamePlay.started = true
             }
+            
+            SoundManager.playPop()
         }
     }
     
@@ -278,9 +301,13 @@ extension GameScene {
             gamePlay.addChoice(number: node.number)
             finishPath(to: node)
             
+            SoundManager.playPop()
+            
             if gamePlay.checkWin() {
+                currentNode?.cancelAnimations()
                 reloadGame()
             } else if !gamePlay.canPlay() {
+                currentNode?.cancelAnimations()
                 currentNode = nil
                 reloadChoices()
             }
@@ -291,13 +318,12 @@ extension GameScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for i in 0..<shapeNodes.count {
-            shapeNodes[i].removeAllActions()
-            shapeNodes[i].xScale = 1
-            shapeNodes[i].yScale = 1
+        if (!gamePlay.waitForNewRound) {
+            for node in shapeNodes {
+                node.cancelAnimations()
+            }
         }
-        
+        clearPaths()
         reloadChoices()
     }
     
@@ -395,5 +421,6 @@ extension GameScene {
         self.removeChildren(in: pathShapes)
         pathShapes.removeAll()
         refreshPath()
+        currentNode = nil
     }
 }

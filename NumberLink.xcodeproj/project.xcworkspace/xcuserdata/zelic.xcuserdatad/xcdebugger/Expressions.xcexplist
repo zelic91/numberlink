@@ -3,9 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "GameScene.finishPath(to:):GameScene.swift">
-      </ContextState>
-      <ContextState
          contextName = "GameScene.touchesMoved(_:with:):GameScene.swift">
          <PersistentStrings>
             <PersistentString
@@ -18,6 +15,25 @@
                value = "!gamePlay.waitForNewRound">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IAPManager.purchase():IAPManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "product">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IAPManager.productsRequest(_:didReceive:):IAPManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.products.first as? SKProduct">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.finishPath(to:):GameScene.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

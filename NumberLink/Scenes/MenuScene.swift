@@ -22,6 +22,8 @@ class MenuScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        SoundManager.playBackground()
+        
         setupView()
     }
     
@@ -37,6 +39,7 @@ extension MenuScene {
         setupScore()
         setupButtons()
         setupWaves()
+        
     }
     
     func setupLogo() {
@@ -56,7 +59,7 @@ extension MenuScene {
         scoreLabel.fontColor = Common.mainColor
         scoreLabel.verticalAlignmentMode = .center
         scoreLabel.isUserInteractionEnabled = false
-        scoreLabel.position = CGPoint(x: self.size.width / 2, y: cupNode.position.y - cupNode.size.height / 2 - 30)
+        scoreLabel.position = CGPoint(x: self.size.width / 2, y: cupNode.position.y - cupNode.size.height / 2 - 40)
         
         addChild(scoreLabel)
     }
@@ -70,13 +73,22 @@ extension MenuScene {
         }
         
         let leaderboardButton = ButtonNode("Leaderboard")
+        leaderboardButton.setTouchHandler {
+            ScoreUtil.showLeaderboard()
+        }
         leaderboardButton.position = CGPoint(x: -playButton.size.width / 2 + leaderboardButton.size.width/2, y: playButton.position.y - leaderboardButton.size.height - 10)
         
         let shopButton = ButtonNode("Cart")
         shopButton.position = CGPoint(x: playButton.position.x, y: leaderboardButton.position.y)
+        shopButton.setTouchHandler {
+            IAPManager.getInstance()?.purchase()
+        }
         
         let soundButton = ButtonNode("Sound On")
         soundButton.position = CGPoint(x: playButton.size.width / 2 - soundButton.size.width/2, y: leaderboardButton.position.y)
+        soundButton.setTouchHandler {
+            SoundManager.toogleSound()
+        }
         
         buttonGroup.addChild(playButton)
         buttonGroup.addChild(leaderboardButton)
@@ -99,9 +111,9 @@ extension MenuScene {
         self.addChild(wave02)
         
         // Setup animation
-        let waveAction = SKAction.moveBy(x: 0, y: -10, duration: 1)
+        let waveAction = SKAction.scaleX(by: 1, y: 0.8, duration: 2)
         let reverseAction = waveAction.reversed()
-        let delayAction = SKAction.wait(forDuration: 0.5)
+        let delayAction = SKAction.wait(forDuration: 0.2)
         let sequence01 = SKAction.repeatForever(SKAction.sequence([waveAction, reverseAction]))
         let sequence02 = SKAction.repeatForever(SKAction.sequence([delayAction, waveAction, reverseAction]))
         wave01.run(sequence01)
@@ -114,7 +126,7 @@ extension MenuScene {
     
     func goToGameScene() {
         let gameScene = GameScene.create()
-        let transition = SKTransition.fade(withDuration: 0.3)
+        let transition = SKTransition.fade(with: .white, duration: 0.3)
         self.view?.presentScene(gameScene, transition: transition)
     }
     

@@ -1,0 +1,27 @@
+STATES:
+
+1. Main Menu
+
+2. Game
+2.1 New Game:
+  - Setup UI & Game Components.
+  - Generate New Numbers.
+  - Reset Score.
+  - Animate Nodes
+
+2.1.1. Start Game (by tapping on a node):
+  - Start the Progress Bar.
+  - Start the Timer.
+2.2. Next Round
+  - Generate New Numbers.
+  - Keep Score.
+  - Reset Timer.
+  - Reset Progress Bar.
+  - Animate Nodes.
+  - Start the Progress Bar.
+  - Start the Timer.
+
+2.3. Replay
+  - Generate New Numbers.
+  - Reset Score.
+  - Animate Nodes

@@ -15,4 +15,10 @@ class NumberNode: SKShapeNode {
         let scaleAction = SKAction.scale(to: 1.2, duration: 0.2)
         self.run(scaleAction)
     }
+    
+    func cancelAnimations() {
+        self.removeAllActions()
+        self.xScale = 1
+        self.yScale = 1
+    }
 }

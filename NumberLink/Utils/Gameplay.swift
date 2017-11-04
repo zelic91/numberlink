@@ -28,12 +28,22 @@ class Gameplay {
     }
     
     func canAdd(number: Int) -> Bool {
-        debugPrint(chosenNumbers.index(of: number) == nil)
         return chosenNumbers.index(of: number) == nil
     }
     
     func reloadChoices() {
         chosenNumbers.removeAll()
+    }
+    
+    func newGame() {
+        score = 0
+        bound = 10
+        time = 0
+        started = false
+        waitForNewRound = true
+        reloadChoices()
+        reloadNumbers()
+        reloadColors()
     }
     
     func reloadGame() {

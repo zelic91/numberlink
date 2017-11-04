@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9100B7AC1FA6B2210096C79F /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DD50571FA4D28F00F2358B /* GoogleMobileAds.framework */; };
+		9100B7AE1FA6B2FB0096C79F /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100B7AD1FA6B2FB0096C79F /* AdsManager.swift */; };
+		911730A31FA764E300D4097D /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911730A21FA764E300D4097D /* LayoutNode.swift */; };
 		9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA4D1F921C300020CB58 /* NumberNode.swift */; };
 		9129BA521F92210C0020CB58 /* CGPoint+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */; };
 		9129BA541F9227DF0020CB58 /* Gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9129BA531F9227DF0020CB58 /* Gradient.fsh */; };
+		9145CC8B1FAD539D00991122 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9145CC8A1FAD539D00991122 /* background.mp3 */; };
+		9145CC8D1FAD53AD00991122 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9145CC8C1FAD53AD00991122 /* SoundManager.swift */; };
+		9145CC8F1FAD613F00991122 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9145CC8E1FAD613F00991122 /* pop.mp3 */; };
+		914E15FE1FA47F670051DD83 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914E15FD1FA47F670051DD83 /* GameKit.framework */; };
 		9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187C4771F9231B400AA624A /* SKColor+Vector4.swift */; };
 		91BA261F1F99DC27000D954B /* ProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA261E1F99DC27000D954B /* ProgressNode.swift */; };
 		91BA26241F9A393E000D954B /* GameOverNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA26231F9A393E000D954B /* GameOverNode.swift */; };
@@ -23,11 +30,14 @@
 		91C7F1311F89D064006E4B1C /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F1301F89D064006E4B1C /* MenuScene.swift */; };
 		91C7F1331F89F0D6006E4B1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C7F1321F89F0D5006E4B1C /* Assets.xcassets */; };
 		91CD27111F92EB87005165D9 /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CD27101F92EB87005165D9 /* Gameplay.swift */; };
+		91E77A6F1FADC7E7005F16F0 /* MenuTestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E77A6E1FADC7E7005F16F0 /* MenuTestScene.swift */; };
 		91EBCD5E1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91EBCD5D1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf */; };
 		91EDE65C1FA44DDC0069B5A0 /* PauseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDE65B1FA44DDC0069B5A0 /* PauseNode.swift */; };
 		91FB91401FA420C6002D1F1A /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB913F1FA420C6002D1F1A /* ButtonNode.swift */; };
 		91FB91421FA43512002D1F1A /* ScoreUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB91411FA43512002D1F1A /* ScoreUtil.swift */; };
 		91FB91441FA44023002D1F1A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FB91431FA44023002D1F1A /* Common.swift */; };
+		91FE8A9E1FAAB03300632789 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91FE8A9D1FAAB03300632789 /* StoreKit.framework */; };
+		91FE8AA01FAAB15700632789 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FE8A9F1FAAB15700632789 /* IAPManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +58,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9100B7AD1FA6B2FB0096C79F /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
+		911730A21FA764E300D4097D /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
 		9129BA4D1F921C300020CB58 /* NumberNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberNode.swift; sourceTree = "<group>"; };
 		9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Distance.swift"; sourceTree = "<group>"; };
 		9129BA531F9227DF0020CB58 /* Gradient.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gradient.fsh; sourceTree = "<group>"; };
+		9145CC8A1FAD539D00991122 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		9145CC8C1FAD53AD00991122 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		9145CC8E1FAD613F00991122 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		914E15FD1FA47F670051DD83 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		9187C4771F9231B400AA624A /* SKColor+Vector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Vector4.swift"; sourceTree = "<group>"; };
 		91BA261E1F99DC27000D954B /* ProgressNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressNode.swift; sourceTree = "<group>"; };
 		91BA26231F9A393E000D954B /* GameOverNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverNode.swift; sourceTree = "<group>"; };
@@ -70,11 +86,15 @@
 		91C7F1301F89D064006E4B1C /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		91C7F1321F89F0D5006E4B1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91CD27101F92EB87005165D9 /* Gameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
+		91DD50571FA4D28F00F2358B /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		91E77A6E1FADC7E7005F16F0 /* MenuTestScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTestScene.swift; sourceTree = "<group>"; };
 		91EBCD5D1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proxima-nova-soft-semibold.otf"; sourceTree = "<group>"; };
 		91EDE65B1FA44DDC0069B5A0 /* PauseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseNode.swift; sourceTree = "<group>"; };
 		91FB913F1FA420C6002D1F1A /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		91FB91411FA43512002D1F1A /* ScoreUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreUtil.swift; sourceTree = "<group>"; };
 		91FB91431FA44023002D1F1A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		91FE8A9D1FAAB03300632789 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		91FE8A9F1FAAB15700632789 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +102,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91FE8A9E1FAAB03300632789 /* StoreKit.framework in Frameworks */,
+				9100B7AC1FA6B2210096C79F /* GoogleMobileAds.framework in Frameworks */,
+				914E15FE1FA47F670051DD83 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +125,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9145CC891FAD539D00991122 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				9145CC8E1FAD613F00991122 /* pop.mp3 */,
+				9145CC8A1FAD539D00991122 /* background.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		914E15FC1FA47F670051DD83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91FE8A9D1FAAB03300632789 /* StoreKit.framework */,
+				91DD50571FA4D28F00F2358B /* GoogleMobileAds.framework */,
+				914E15FD1FA47F670051DD83 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9199F57B1F8A388E004BB26B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +158,7 @@
 			children = (
 				91C7F1021F89CD9D006E4B1C /* GameScene.swift */,
 				91C7F1301F89D064006E4B1C /* MenuScene.swift */,
+				91E77A6E1FADC7E7005F16F0 /* MenuTestScene.swift */,
 				91BA26231F9A393E000D954B /* GameOverNode.swift */,
 				91EDE65B1FA44DDC0069B5A0 /* PauseNode.swift */,
 			);
@@ -131,6 +174,9 @@
 				9187C4771F9231B400AA624A /* SKColor+Vector4.swift */,
 				91FB91411FA43512002D1F1A /* ScoreUtil.swift */,
 				91FB91431FA44023002D1F1A /* Common.swift */,
+				9100B7AD1FA6B2FB0096C79F /* AdsManager.swift */,
+				91FE8A9F1FAAB15700632789 /* IAPManager.swift */,
+				9145CC8C1FAD53AD00991122 /* SoundManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -141,6 +187,7 @@
 				9129BA4D1F921C300020CB58 /* NumberNode.swift */,
 				91BA261E1F99DC27000D954B /* ProgressNode.swift */,
 				91FB913F1FA420C6002D1F1A /* ButtonNode.swift */,
+				911730A21FA764E300D4097D /* LayoutNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -153,6 +200,7 @@
 				91C7F1161F89CD9D006E4B1C /* NumberLinkTests */,
 				91C7F1211F89CD9D006E4B1C /* NumberLinkUITests */,
 				91C7F0FA1F89CD9D006E4B1C /* Products */,
+				914E15FC1FA47F670051DD83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +217,7 @@
 		91C7F0FB1F89CD9D006E4B1C /* NumberLink */ = {
 			isa = PBXGroup;
 			children = (
+				9145CC891FAD539D00991122 /* Music */,
 				91BA26221F9A3383000D954B /* Nodes */,
 				91BA26211F9A3324000D954B /* Utils */,
 				91BA26201F9A3302000D954B /* Scenes */,
@@ -272,6 +321,14 @@
 					91C7F0F81F89CD9D006E4B1C = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					91C7F1121F89CD9D006E4B1C = {
 						CreatedOnToolsVersion = 9.0;
@@ -314,6 +371,8 @@
 				91C7F1081F89CD9D006E4B1C /* Main.storyboard in Resources */,
 				91C7F1331F89F0D6006E4B1C /* Assets.xcassets in Resources */,
 				91C7F10D1F89CD9D006E4B1C /* LaunchScreen.storyboard in Resources */,
+				9145CC8B1FAD539D00991122 /* background.mp3 in Resources */,
+				9145CC8F1FAD613F00991122 /* pop.mp3 in Resources */,
 				91EBCD5E1F97AC3F00C7F81B /* proxima-nova-soft-semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +398,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91FE8AA01FAAB15700632789 /* IAPManager.swift in Sources */,
+				91E77A6F1FADC7E7005F16F0 /* MenuTestScene.swift in Sources */,
 				91BA26241F9A393E000D954B /* GameOverNode.swift in Sources */,
 				9129BA521F92210C0020CB58 /* CGPoint+Distance.swift in Sources */,
 				91FB91441FA44023002D1F1A /* Common.swift in Sources */,
@@ -346,6 +407,7 @@
 				91C7F1031F89CD9D006E4B1C /* GameScene.swift in Sources */,
 				91C7F1311F89D064006E4B1C /* MenuScene.swift in Sources */,
 				91EDE65C1FA44DDC0069B5A0 /* PauseNode.swift in Sources */,
+				9100B7AE1FA6B2FB0096C79F /* AdsManager.swift in Sources */,
 				91C7F1051F89CD9D006E4B1C /* GameViewController.swift in Sources */,
 				91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */,
 				91BA261F1F99DC27000D954B /* ProgressNode.swift in Sources */,
@@ -353,6 +415,8 @@
 				9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */,
 				91CD27111F92EB87005165D9 /* Gameplay.swift in Sources */,
 				9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */,
+				911730A31FA764E300D4097D /* LayoutNode.swift in Sources */,
+				9145CC8D1FAD53AD00991122 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,9 +584,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78B8A7HE4L;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/Frameworks";
 				INFOPLIST_FILE = NumberLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thuongnh.NumberLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -536,9 +607,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78B8A7HE4L;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/Frameworks";
 				INFOPLIST_FILE = NumberLink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thuongnh.NumberLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -553,6 +631,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78B8A7HE4L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NumberLinkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thuongnh.NumberLinkTests;
@@ -570,6 +652,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78B8A7HE4L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NumberLinkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thuongnh.NumberLinkTests;
@@ -586,6 +672,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78B8A7HE4L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NumberLinkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thuongnh.NumberLinkUITests;
@@ -602,6 +692,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78B8A7HE4L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NumberLinkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thuongnh.NumberLinkUITests;

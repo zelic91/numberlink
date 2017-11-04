@@ -8,15 +8,21 @@
 
 import UIKit
 import SpriteKit
+import GameKit
+import GoogleMobileAds
 
 class GameViewController: UIViewController {
 
+    var gameCenterEnabled: Bool = false
+    
+    @IBOutlet weak var vBanner: GADBannerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            let scene = MenuScene(size: CGSize(width: 375, height: 667))
+            let scene = MenuTestScene(size: CGSize(width: 375, height: 667))
             scene.scaleMode = .aspectFit
             view.presentScene(scene)
             
@@ -26,6 +32,16 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        
+        // Game center
+        authenticateLocalPlayer()
+        ScoreUtil.delegate = self
+        
+        AdsManager.delegate = self
+        setupAdsBanner()
+        
+        IAPManager.getInstance()?.fetchProducts()
+        IAPManager.getInstance()?.delegate = self
     }
 
     override var shouldAutorotate: Bool {
@@ -48,4 +64,83 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+}
+
+extension GameViewController {
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = { (viewController, error) -> Void in
+            if (viewController != nil) {
+                self.present(viewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
+                self.gameCenterEnabled = true
+                
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardId, error) in
+                    if error != nil {
+                    } else {
+                    }
+                })
+            } else {
+                self.gameCenterEnabled = false
+            }
+        }
+    }
+}
+
+extension GameViewController: GKGameCenterControllerDelegate {
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension GameViewController: ScoreDelegate {
+    func showLeaderboard() {
+        let gcViewController = GKGameCenterViewController()
+        gcViewController.gameCenterDelegate = self
+        gcViewController.viewState = .leaderboards
+        gcViewController.leaderboardIdentifier = ScoreUtil.LEADER_BOARD_ID
+        present(gcViewController, animated: true, completion: nil)
+    }
+}
+
+extension GameViewController: GADBannerViewDelegate {
+    
+    func setupAdsBanner() {
+        vBanner.adUnitID = Common.adsUnitID
+        vBanner.delegate = self
+        vBanner.rootViewController = self
+    }
+    
+    func requestAds() {
+        let request = GADRequest()
+        request.testDevices = ["1e7e9704b0581cf4ba07be0e5543463e"]
+        vBanner.load(request)
+    }
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        vBanner.isHidden = false
+    }
+    
+}
+
+extension GameViewController: AdsDelegate {
+    
+    func show() {
+        requestAds()
+    }
+    
+    func hide() {
+        vBanner.isHidden = true
+    }
+    
+}
+
+extension GameViewController: IAPDelegate {
+    
+    func purchased() {
+        AdsManager.disableAds()
+        vBanner.isHidden = true
+    }
+    
 }

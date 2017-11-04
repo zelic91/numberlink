@@ -31,6 +31,10 @@ class ProgressNode: SKCropNode {
         addChild(foregroundNode)
     }
     
+    func reloadProgress() {
+        foregroundNode.position = CGPoint(x: backgroundNode.position.x, y: 0)
+    }
+    
     func startProgress(in time: Double, with completion: @escaping () -> Void) {
         foregroundNode.removeAllActions()
         foregroundNode.position = CGPoint(x: 0, y: 0)
@@ -38,6 +42,10 @@ class ProgressNode: SKCropNode {
         let block = SKAction.run(completion)
         action = SKAction.sequence([transition, block])
         foregroundNode.run(action!)
+    }
+    
+    func pauseProgress() {
+        foregroundNode.removeAllActions()
     }
     
     func size() -> CGSize {
