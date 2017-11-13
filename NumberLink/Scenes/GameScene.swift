@@ -41,6 +41,7 @@ class GameScene: SKScene {
     
     // Paths created by touches
     var pathShapes: [SKShapeNode] = [SKShapeNode]()
+    var solutionPathShapes: [SKShapeNode] = [SKShapeNode]()
     var currentPath: SKShapeNode = SKShapeNode()
     var currentNode: NumberNode?
     
@@ -142,7 +143,7 @@ extension GameScene {
         for i in 0..<5 {
             let shape = NumberNode(circleOfRadius: elementRadius)
             shape.fillColor = .white
-            shape.lineWidth = 4
+            shape.lineWidth = 6
             let x: CGFloat = centerPoint.x + radius * CGFloat(sin( Double(i) * 2.0 * Double.pi / 5))
             let y: CGFloat = centerPoint.y + radius * CGFloat(cos( Double(i) * 2.0 * Double.pi / 5))
             let point = CGPoint(x: x, y: y)
@@ -195,6 +196,27 @@ extension GameScene {
         }
     }
     
+    func buildSolutionShapes() {
+        clearSolution()
+        let solution = gamePlay.getSolution()
+        for i in 1..<solution.count {
+            let path = buildConnectedGradientPath(from: shapeNodes[solution[i]], to: shapeNodes[solution[i-1]])
+            path.yScale = 0
+            addChild(path)
+            solutionPathShapes.append(path)
+        }
+    }
+    
+    func animateSolution() -> TimeInterval {
+        var duration: TimeInterval = 0.0
+        let time: TimeInterval = 0.5
+        for path in solutionPathShapes {
+            path.run(SKAction.sequence([SKAction.wait(forDuration: duration), SKAction.scaleY(to: 1, duration: time)]))
+            duration = duration + time
+        }
+        return duration
+    }
+    
 // MARK: Game life cycle
     
     func newGame() {
@@ -202,8 +224,9 @@ extension GameScene {
         reloadScore()
         clearPaths()
         reloadNumberShapes()
-        animateNumberShapes()
+        buildSolutionShapes()
         progressNode.reloadProgress()
+        animateNumberShapes()
     }
     
     func reloadScore() {
@@ -222,6 +245,7 @@ extension GameScene {
         gamePlay.reloadGame()
         clearPaths()
         reloadNumberShapes()
+        buildSolutionShapes()
         animateNumberShapes()
         reloadProgress()
     }
@@ -248,10 +272,16 @@ extension GameScene {
     }
     
     func reloadProgress() {
-        progressNode.startProgress(in: 5, with: { [weak self] in
-            ScoreUtil.setScore(value: self!.gamePlay.score)
-            self?.progressNode.pauseProgress()
-            self?.showGameOver()
+        progressNode.startProgress(in: 5, with: {
+            ScoreUtil.setScore(value: self.gamePlay.score)
+            self.gamePlay.gameOver()
+            self.progressNode.pauseProgress()
+            
+            let wait = self.animateSolution() + 2.0
+            
+            self.run(SKAction.sequence([SKAction.wait(forDuration: wait), SKAction.run {
+                    self.showGameOver()
+            }]))
         })
     }
 }
@@ -268,7 +298,7 @@ extension GameScene {
     
     func showGameOver() {
         SoundManager.stopBackground()
-        
+        gameOverScreen.setScore(score: gamePlay.score)
         gameOverScreen.show()
     }
 }
@@ -279,7 +309,7 @@ extension GameScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchNode = findShapeNode(with: touches)
-        if let node = touchNode {
+        if let node = touchNode, !gamePlay.isOver {
             node.animateSelectNode()
             gamePlay.addChoice(number: node.number)
             currentNode = node
@@ -345,7 +375,7 @@ extension GameScene {
     func refreshPath() {
         if let node = currentNode {
             currentPath.strokeColor = node.strokeColor
-            currentPath.lineWidth = 4
+            currentPath.lineWidth = 6
             currentPath.zPosition = -1
             currentPath.fillColor = .clear
             currentPath.path = nil
@@ -369,38 +399,29 @@ extension GameScene {
         currentNode = node
     }
     
-    func addGradientPath(node: SKShapeNode) {
-        let dx = Double(node.position.x - currentNode!.position.x)
-        let dy = Double(currentNode!.position.y - node.position.y)
-        let path = SKShapeNode(rect: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 4, height: sqrt(dx * dx + dy * dy))))
+    func buildConnectedGradientPath(from nodeA: SKShapeNode, to nodeB: SKShapeNode) -> SKShapeNode {
+        let dx = Double(nodeB.position.x - nodeA.position.x)
+        let dy = Double(nodeA.position.y - nodeB.position.y)
+        let path = SKShapeNode(rect: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 6, height: sqrt(dx * dx + dy * dy))))
         let shader = SKShader(fileNamed: "Gradient.fsh")
-        let fromColor = SKColor(cgColor: (currentNode?.strokeColor.cgColor)!)
-        let toColor = SKColor(cgColor: node.strokeColor.cgColor)
+        let fromColor = SKColor(cgColor: nodeA.strokeColor.cgColor)
+        let toColor = SKColor(cgColor: nodeB.strokeColor.cgColor)
         let topUniform = SKUniform(name: "topColor")
         let bottomUniform = SKUniform(name: "bottomColor")
         let angleUniform = SKUniform(name: "angle")
         topUniform.floatVector4Value = fromColor.vec4()
         bottomUniform.floatVector4Value = toColor.vec4()
-        angleUniform.floatValue = 1.0
+        angleUniform.floatValue = 0.0
         if dy >= 0 {
             path.zRotation = CGFloat(atan(dx / dy))
+            angleUniform.floatValue = Float(atan(dx / dy) - Double.pi / 2)
         } else {
             path.zRotation = CGFloat(atan(dx / dy) + Double.pi)
+            angleUniform.floatValue = Float(atan(dx / dy) + Double.pi / 2)
         }
         
-        if dx < 0 {
-            angleUniform.floatValue = -1.0
-        } else if dx == 0 {
-            angleUniform.floatValue = 0.0
-        }
-        
-        if dx > 0 || dy < 0 {
-            topUniform.floatVector4Value = toColor.vec4()
-            bottomUniform.floatVector4Value = fromColor.vec4()
-        } else {
-            topUniform.floatVector4Value = fromColor.vec4()
-            bottomUniform.floatVector4Value = toColor.vec4()
-        }
+        topUniform.floatVector4Value = fromColor.vec4()
+        bottomUniform.floatVector4Value = toColor.vec4()
         
         let uniforms = [
             topUniform,
@@ -409,9 +430,14 @@ extension GameScene {
         ]
         shader.uniforms = uniforms
         path.fillShader = shader
-        path.position = node.position
+        path.position = nodeB.position
         path.zPosition = -1
         
+        return path
+    }
+    
+    func addGradientPath(node: SKShapeNode) {
+        let path = buildConnectedGradientPath(from: currentNode!, to: node)
         addChild(path)
         pathShapes.append(path)
     }
@@ -422,5 +448,10 @@ extension GameScene {
         pathShapes.removeAll()
         refreshPath()
         currentNode = nil
+    }
+    
+    func clearSolution() {
+        self.removeChildren(in: solutionPathShapes)
+        solutionPathShapes.removeAll()
     }
 }

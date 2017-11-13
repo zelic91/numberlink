@@ -113,7 +113,7 @@ extension GameViewController: GADBannerViewDelegate {
     
     func requestAds() {
         let request = GADRequest()
-        request.testDevices = ["1e7e9704b0581cf4ba07be0e5543463e"]
+        request.testDevices = ["1e7e9704b0581cf4ba07be0e5543463e", kGADSimulatorID]
         vBanner.load(request)
     }
     
@@ -142,4 +142,15 @@ extension GameViewController: IAPDelegate {
         vBanner.isHidden = true
     }
     
+}
+
+extension GameViewController {
+    static func showAlertView(title: String, message: String) {
+        let alertView = ZAlertView(title: title, message: message, alertType: .alert)
+        alertView.closeHandler = { (alertView) -> () in
+            alertView.dismissAlertView()
+        }
+        alertView.modalTransitionStyle = .flipHorizontal
+        alertView.show()
+    }
 }

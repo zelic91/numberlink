@@ -10,6 +10,11 @@
 		9100B7AC1FA6B2210096C79F /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DD50571FA4D28F00F2358B /* GoogleMobileAds.framework */; };
 		9100B7AE1FA6B2FB0096C79F /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100B7AD1FA6B2FB0096C79F /* AdsManager.swift */; };
 		911730A31FA764E300D4097D /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911730A21FA764E300D4097D /* LayoutNode.swift */; };
+		9126DE6F1FB3409A000526A7 /* ZAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9126DE6C1FB3409A000526A7 /* ZAlertView.swift */; };
+		9126DE701FB3409A000526A7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9126DE6D1FB3409A000526A7 /* UIColor.swift */; };
+		9126DE711FB3409A000526A7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9126DE6E1FB3409A000526A7 /* UIImage.swift */; };
+		9126DE731FB34BD8000526A7 /* Outline.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9126DE721FB34BD8000526A7 /* Outline.fsh */; };
+		9126DE761FB3536B000526A7 /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9126DE751FB3536A000526A7 /* MKOutlinedLabelNode.swift */; };
 		9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA4D1F921C300020CB58 /* NumberNode.swift */; };
 		9129BA521F92210C0020CB58 /* CGPoint+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */; };
 		9129BA541F9227DF0020CB58 /* Gradient.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9129BA531F9227DF0020CB58 /* Gradient.fsh */; };
@@ -18,6 +23,8 @@
 		9145CC8F1FAD613F00991122 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9145CC8E1FAD613F00991122 /* pop.mp3 */; };
 		914E15FE1FA47F670051DD83 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914E15FD1FA47F670051DD83 /* GameKit.framework */; };
 		9187C4781F9231B400AA624A /* SKColor+Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187C4771F9231B400AA624A /* SKColor+Vector4.swift */; };
+		918B6E6B1FB6C02C00555B2E /* AnimPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B6E6A1FB6C02B00555B2E /* AnimPool.swift */; };
+		91B20F411FB7D59A00848AC7 /* SKAction+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B20F401FB7D59A00848AC7 /* SKAction+Custom.swift */; };
 		91BA261F1F99DC27000D954B /* ProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA261E1F99DC27000D954B /* ProgressNode.swift */; };
 		91BA26241F9A393E000D954B /* GameOverNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA26231F9A393E000D954B /* GameOverNode.swift */; };
 		91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F0FC1F89CD9D006E4B1C /* AppDelegate.swift */; };
@@ -60,6 +67,11 @@
 /* Begin PBXFileReference section */
 		9100B7AD1FA6B2FB0096C79F /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
 		911730A21FA764E300D4097D /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
+		9126DE6C1FB3409A000526A7 /* ZAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZAlertView.swift; sourceTree = "<group>"; };
+		9126DE6D1FB3409A000526A7 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		9126DE6E1FB3409A000526A7 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		9126DE721FB34BD8000526A7 /* Outline.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Outline.fsh; sourceTree = "<group>"; };
+		9126DE751FB3536A000526A7 /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 		9129BA4D1F921C300020CB58 /* NumberNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberNode.swift; sourceTree = "<group>"; };
 		9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Distance.swift"; sourceTree = "<group>"; };
 		9129BA531F9227DF0020CB58 /* Gradient.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gradient.fsh; sourceTree = "<group>"; };
@@ -68,6 +80,8 @@
 		9145CC8E1FAD613F00991122 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		914E15FD1FA47F670051DD83 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		9187C4771F9231B400AA624A /* SKColor+Vector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Vector4.swift"; sourceTree = "<group>"; };
+		918B6E6A1FB6C02B00555B2E /* AnimPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimPool.swift; sourceTree = "<group>"; };
+		91B20F401FB7D59A00848AC7 /* SKAction+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKAction+Custom.swift"; sourceTree = "<group>"; };
 		91BA261E1F99DC27000D954B /* ProgressNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressNode.swift; sourceTree = "<group>"; };
 		91BA26231F9A393E000D954B /* GameOverNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverNode.swift; sourceTree = "<group>"; };
 		91C7F0F91F89CD9D006E4B1C /* NumberLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +139,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9126DE6A1FB3409A000526A7 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				9126DE741FB3536A000526A7 /* OutlineLabelNode */,
+				9126DE6B1FB3409A000526A7 /* ZAlertView */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		9126DE6B1FB3409A000526A7 /* ZAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9126DE6C1FB3409A000526A7 /* ZAlertView.swift */,
+				9126DE6D1FB3409A000526A7 /* UIColor.swift */,
+				9126DE6E1FB3409A000526A7 /* UIImage.swift */,
+			);
+			path = ZAlertView;
+			sourceTree = "<group>";
+		};
+		9126DE741FB3536A000526A7 /* OutlineLabelNode */ = {
+			isa = PBXGroup;
+			children = (
+				9126DE751FB3536A000526A7 /* MKOutlinedLabelNode.swift */,
+			);
+			path = OutlineLabelNode;
+			sourceTree = "<group>";
+		};
 		9145CC891FAD539D00991122 /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				9129BA531F9227DF0020CB58 /* Gradient.fsh */,
+				9126DE721FB34BD8000526A7 /* Outline.fsh */,
 				91CD27101F92EB87005165D9 /* Gameplay.swift */,
 				9129BA511F92210C0020CB58 /* CGPoint+Distance.swift */,
 				9187C4771F9231B400AA624A /* SKColor+Vector4.swift */,
@@ -177,6 +219,8 @@
 				9100B7AD1FA6B2FB0096C79F /* AdsManager.swift */,
 				91FE8A9F1FAAB15700632789 /* IAPManager.swift */,
 				9145CC8C1FAD53AD00991122 /* SoundManager.swift */,
+				918B6E6A1FB6C02B00555B2E /* AnimPool.swift */,
+				91B20F401FB7D59A00848AC7 /* SKAction+Custom.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -217,6 +261,7 @@
 		91C7F0FB1F89CD9D006E4B1C /* NumberLink */ = {
 			isa = PBXGroup;
 			children = (
+				9126DE6A1FB3409A000526A7 /* Vendor */,
 				9145CC891FAD539D00991122 /* Music */,
 				91BA26221F9A3383000D954B /* Nodes */,
 				91BA26211F9A3324000D954B /* Utils */,
@@ -369,6 +414,7 @@
 			files = (
 				9129BA541F9227DF0020CB58 /* Gradient.fsh in Resources */,
 				91C7F1081F89CD9D006E4B1C /* Main.storyboard in Resources */,
+				9126DE731FB34BD8000526A7 /* Outline.fsh in Resources */,
 				91C7F1331F89F0D6006E4B1C /* Assets.xcassets in Resources */,
 				91C7F10D1F89CD9D006E4B1C /* LaunchScreen.storyboard in Resources */,
 				9145CC8B1FAD539D00991122 /* background.mp3 in Resources */,
@@ -399,18 +445,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				91FE8AA01FAAB15700632789 /* IAPManager.swift in Sources */,
+				9126DE711FB3409A000526A7 /* UIImage.swift in Sources */,
+				9126DE701FB3409A000526A7 /* UIColor.swift in Sources */,
 				91E77A6F1FADC7E7005F16F0 /* MenuTestScene.swift in Sources */,
 				91BA26241F9A393E000D954B /* GameOverNode.swift in Sources */,
 				9129BA521F92210C0020CB58 /* CGPoint+Distance.swift in Sources */,
 				91FB91441FA44023002D1F1A /* Common.swift in Sources */,
 				91FB91401FA420C6002D1F1A /* ButtonNode.swift in Sources */,
+				918B6E6B1FB6C02C00555B2E /* AnimPool.swift in Sources */,
 				91C7F1031F89CD9D006E4B1C /* GameScene.swift in Sources */,
 				91C7F1311F89D064006E4B1C /* MenuScene.swift in Sources */,
+				9126DE6F1FB3409A000526A7 /* ZAlertView.swift in Sources */,
 				91EDE65C1FA44DDC0069B5A0 /* PauseNode.swift in Sources */,
 				9100B7AE1FA6B2FB0096C79F /* AdsManager.swift in Sources */,
 				91C7F1051F89CD9D006E4B1C /* GameViewController.swift in Sources */,
 				91C7F0FD1F89CD9D006E4B1C /* AppDelegate.swift in Sources */,
+				9126DE761FB3536B000526A7 /* MKOutlinedLabelNode.swift in Sources */,
 				91BA261F1F99DC27000D954B /* ProgressNode.swift in Sources */,
+				91B20F411FB7D59A00848AC7 /* SKAction+Custom.swift in Sources */,
 				91FB91421FA43512002D1F1A /* ScoreUtil.swift in Sources */,
 				9129BA4E1F921C300020CB58 /* NumberNode.swift in Sources */,
 				91CD27111F92EB87005165D9 /* Gameplay.swift in Sources */,

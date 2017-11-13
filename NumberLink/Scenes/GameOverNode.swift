@@ -10,7 +10,8 @@ import SpriteKit
 
 class GameOverNode: SKNode {
     
-    var scoreLabel: SKLabelNode = SKLabelNode(fontNamed: "ProximaNovaSoft-Semibold")
+    var scoreLabel: MKOutlinedLabelNode = MKOutlinedLabelNode(fontNamed: Common.fontName, fontSize: 90)
+    var effectNode: SKEffectNode = SKEffectNode()
     var homeButton: ButtonNode = ButtonNode("Home")
     var replayButton: ButtonNode = ButtonNode("Replay")
     var backgroundNode: SKSpriteNode = SKSpriteNode()
@@ -32,10 +33,20 @@ class GameOverNode: SKNode {
         homeButton.position = CGPoint(x: 0, y: homeButton.size.height)
         replayButton.position = CGPoint(x: 0, y: homeButton.size.height/2 - 10 - replayButton.size.height/2)
         
+        scoreLabel.fontColor = Common.mainColor
+        
         addChild(backgroundNode)
         addChild(homeButton)
         addChild(replayButton)
         addChild(scoreLabel)
+    }
+    
+    func setScore(score: Int) {
+        scoreLabel.borderColor = .white
+        scoreLabel.borderWidth = 20
+        scoreLabel.outlinedText = "\(score)"
+        scoreLabel.position = CGPoint(x: 0, y: homeButton.size.height + replayButton.size.height)
+        
     }
     
     func show() {

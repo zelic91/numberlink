@@ -83,13 +83,21 @@ extension IAPManager: SKPaymentTransactionObserver {
     func purchased(_ transaction: SKPaymentTransaction) {
         delegate?.purchased()
         SKPaymentQueue.default().finishTransaction(transaction)
+        showPurchasedAlert()
     }
     
     func restore(_ transaction: SKPaymentTransaction) {
         delegate?.purchased()
         SKPaymentQueue.default().finishTransaction(transaction)
+        showPurchasedAlert()
     }
     
+    
+    
     func handleOtherCases(_ transaction: SKPaymentTransaction) {
+    }
+    
+    func showPurchasedAlert() {
+        GameViewController.showAlertView(title: "Purchase Successfully", message: "You have purchased successfully. Now all the ads are removed. Enjoy the game!")
     }
 }

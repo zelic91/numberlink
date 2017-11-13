@@ -84,6 +84,9 @@ extension MenuTestScene {
         }
         
         let soundButton = ButtonNode("Sound On")
+        if SoundManager.isDisabledSound() {
+            soundButton.disable()
+        }
         soundButton.position = CGPoint(x: playButton.size.width / 2 - soundButton.size.width/2, y: leaderboardButton.position.y)
         soundButton.setTouchHandler {
             SoundManager.toogleSound()

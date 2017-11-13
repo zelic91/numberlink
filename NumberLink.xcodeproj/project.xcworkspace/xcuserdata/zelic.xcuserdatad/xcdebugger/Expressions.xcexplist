@@ -3,18 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "GameScene.touchesMoved(_:with:):GameScene.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "node.name">
-            </PersistentString>
-            <PersistentString
-               value = "node.position != currentNode!.position">
-            </PersistentString>
-            <PersistentString
-               value = "!gamePlay.waitForNewRound">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AnimPool.run(poolName:):AnimPool.swift">
       </ContextState>
       <ContextState
          contextName = "IAPManager.purchase():IAPManager.swift">
@@ -29,6 +18,31 @@
          <PersistentStrings>
             <PersistentString
                value = "response.products.first as? SKProduct">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Anim.run():AnimPool.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.touchesMoved(_:with:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "node.name">
+            </PersistentString>
+            <PersistentString
+               value = "node.position != currentNode!.position">
+            </PersistentString>
+            <PersistentString
+               value = "!gamePlay.waitForNewRound">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuScene.setupAnimation():MenuScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "animPool.pool">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

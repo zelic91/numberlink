@@ -18,6 +18,7 @@ class Gameplay {
     var time: Float = 0
     var started: Bool = false
     var waitForNewRound: Bool = false
+    var isOver = false
     
     func addChoice(number: Int) {
         chosenNumbers.append(number)
@@ -41,12 +42,14 @@ class Gameplay {
         time = 0
         started = false
         waitForNewRound = true
+        isOver = false
         reloadChoices()
         reloadNumbers()
         reloadColors()
     }
     
     func reloadGame() {
+        isOver = false
         waitForNewRound = true
         reloadChoices()
         reloadNumbers()
@@ -101,5 +104,17 @@ class Gameplay {
         if bound > 100 {
             bound = 100
         }
+    }
+    
+    func getSolution() -> [Int] {
+        return numbers.enumerated()
+            .sorted { $0.element < $1.element }
+            .map { offset, _ in
+                offset
+            }
+    }
+    
+    func gameOver() {
+        isOver = true
     }
 }
