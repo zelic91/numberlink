@@ -17,6 +17,7 @@ class Anim {
 
     var node: SKNode
     var delay: Double = 0
+    var totalExecTime: Double = 0
     var executingType: ExecutingType = .sequence
     var repeatable: Bool = false
     var reversible: Bool = false
@@ -37,30 +38,27 @@ class Anim {
         return self
     }
     
-    func getMaxRunningTime() -> Double {
-        var max: Double = 0
+    func calculateTotalExectime(duration: Double, delay: Double?) {
+        let currentExecTime = duration + (delay ?? 0)
         if executingType == .parallel {
-            for action in actions {
-                if max < action.duration {
-                    max = action.duration
-                }
+            if (currentExecTime > totalExecTime) {
+                totalExecTime = currentExecTime
             }
         } else {
-            for action in actions {
-                max += action.duration
-            }
+            totalExecTime += currentExecTime
         }
-        return max
     }
     
     func scale(from: CGFloat, to: CGFloat, duration: Double, timingFunction: ((CGFloat) -> CGFloat)? = nil, delay: Double?) -> Anim {
         let scaleAction = SKAction.customScale(node: node, duration: duration, startScale: CGPoint(x: from, y: from), endScale: CGPoint(x: to, y: to), timingFunction: timingFunction)
+        calculateTotalExectime(duration: duration, delay: delay)
         actions.append(scaleAction)
         return self
     }
     
     func move(to: CGPoint, duration: Double, timingFunction: ((CGFloat) -> CGFloat)? = nil, delay: Double?) -> Anim {
         let moveAction = SKAction.customMove(node: node, duration: duration, startPosition: node.position, endPosition: to, timingFunction: timingFunction)
+        calculateTotalExectime(duration: duration, delay: delay)
         actions.append(moveAction)
         return self
     }
@@ -68,9 +66,10 @@ class Anim {
     func moveIn(distance: CGPoint, duration: Double, timingFunction: ((CGFloat) -> CGFloat)? = nil, delay: Double?) -> Anim {
         let position: CGPoint = CGPoint(x: node.position.x + distance.x, y: node.position.y + distance.y)
         let moveInAction = SKAction.customMove(node: node, duration: duration, startPosition: position, endPosition: node.position, timingFunction: timingFunction)
-        let alphaAction = SKAction.fadeAlpha(to: 1, duration: duration)
+        let alphaAction = SKAction.customAlpha(node: node, duration: duration, from: 0, to: 1, timingFunction: timingFunction)
         executingType = .parallel
-        node.alpha = 0
+        
+        calculateTotalExectime(duration: duration, delay: delay)
         
         if let d = delay {
             self.delay = d
@@ -84,9 +83,10 @@ class Anim {
     func moveOut(distance: CGPoint, duration: Double, timingFunction: ((CGFloat) -> CGFloat)? = nil, delay: Double?) -> Anim {
         let position: CGPoint = CGPoint(x: node.position.x + distance.x, y: node.position.y + distance.y)
         let moveOutAction = SKAction.customMove(node: node, duration: duration, startPosition: node.position, endPosition: position, timingFunction: timingFunction)
-        let alphaAction = SKAction.fadeAlpha(to: 0, duration: duration)
+        let alphaAction = SKAction.customAlpha(node: node, duration: duration, from: 1, to: 0, timingFunction: timingFunction)
         executingType = .parallel
-        node.alpha = 1
+        
+        calculateTotalExectime(duration: duration, delay: delay)
         
         if let d = delay {
             self.delay = d
@@ -115,9 +115,14 @@ class Anim {
     }
     
     func action(_ actionBlock: @escaping () -> (), _ delay: Double?) -> Anim {
-        let ret = SKAction.customAction(withDuration: 0) { (_, _) in
+        var ret = SKAction.customAction(withDuration: 0) { (_, _) in
             actionBlock()
         }
+        
+        if delay != nil {
+           ret = SKAction.sequence([SKAction.wait(forDuration: delay!), ret])
+        }
+        
         actions.append(ret)
         return self
     }
@@ -167,7 +172,7 @@ class AnimPool {
     
     func run() {
         if beforeAction != nil {
-            beforeAction?()
+            beforeAction!()
         }
         
         anims.forEach { (anim) in
@@ -184,11 +189,12 @@ class AnimPool {
     func addAfterAction(node: SKNode, action: @escaping ()->()) {
         var delay = 0.0
         for anim in anims {
-            let maxRunningTime = anim.getMaxRunningTime()
+            let maxRunningTime = anim.totalExecTime
             if delay < maxRunningTime {
                 delay = maxRunningTime
             }
         }
+        
         let anim = Anim(node: node).action(action, delay)
         anims.append(anim)
     }

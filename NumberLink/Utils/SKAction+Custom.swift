@@ -105,6 +105,30 @@ public class RotateEffect: Effect {
 }
 
 /**
+ * Fade a node to a certain alpha factor.
+ */
+public class AlphaEffect: Effect {
+    var startAlpha: CGFloat
+    var delta: CGFloat
+    var previousAlpha: CGFloat
+    
+    public init(node: SKNode, duration: TimeInterval, from: CGFloat, to: CGFloat) {
+        previousAlpha = from
+        self.startAlpha = from
+        delta = to - from
+        node.alpha = from
+        super.init(node: node, duration: duration)
+    }
+    
+    public override func update(_ t: CGFloat) {
+        let newAlpha = startAlpha + delta * t
+        let diff = newAlpha - previousAlpha
+        previousAlpha = newAlpha
+        node.alpha = newAlpha
+    }
+}
+
+/**
  * Wrapper that allows you to use Effect objects as regular SKActions.
  */
 public extension SKAction {
@@ -124,6 +148,11 @@ public extension SKAction {
     public class func customRotate(node: SKNode, duration: TimeInterval, startAngle: CGFloat, endAngle: CGFloat, timingFunction: ((CGFloat) -> CGFloat)?) -> SKAction {
         let effect = RotateEffect(node: node, duration: duration, startAngle: startAngle, endAngle: endAngle)
         effect.timingFunction = timingFunction
+        return actionWithEffect(effect)
+    }
+    
+    public class func customAlpha(node: SKNode, duration: TimeInterval, from: CGFloat, to: CGFloat, timingFunction: ((CGFloat) -> CGFloat)?) -> SKAction {
+        let effect = AlphaEffect(node: node, duration: duration, from: from, to: to)
         return actionWithEffect(effect)
     }
     
